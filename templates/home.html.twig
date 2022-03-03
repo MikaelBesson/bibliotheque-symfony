@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block body %}
+
+    <h1>Bienvenue sur votre bibliotheque</h1>
+    
+    <div class="bibliotheque">
+        <a href="{{ path('etagere') }}">Parcourir les etageres</a>
+        <a href="{{ path('add_book') }}">Ajoutez un livre</a>
+        <a href="{{ path('books') }}">Voir les livres</a>
+
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

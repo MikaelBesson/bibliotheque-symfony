@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Etagere{% endblock %}
+
+{% block body %}
+
+    <h2>Liste des etagere</h2>
+
+    {% for etagere in etageres %}
+        <div class="etagere">
+            <h1>{{ etagere.id }}</h1>
+                {% for category in etagere.categories %}
+                    <h2>{{ category.title }}</h2>
+                    {% for book in category.books %}
+                        <div class="bookTitle">-{{ book.title }}
+                            {% if book.isavailable %}
+                                : Disponible
+                                <a href="/book/take/{{ book.id }}">Prendre</a>
+                            {% else %}
+                                : Indisponible sortie par : {% if book.user %}{{ book.getUser().getName() }}{% endif %}
+                                <a href="/book/return/{{ book.id }}">Rendre</a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+        </div>
+    {% endfor %}
+
+    <div class="separator">_____________________________</div>
+    <a href="/">Retour a l'acceuil</a>
+{% endblock %}

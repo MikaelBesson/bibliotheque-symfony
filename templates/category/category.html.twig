@@ -1,0 +1,22 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %} Categories{% endblock %}
+
+{% block body %}
+
+    <h2>Liste des livres</h2>
+
+    {% for etagere in etageres %}
+        <div class="etagere">
+            <h1>{{ etagere.id }}</h1>
+            {% for category in etagere.categories %}
+                <h2>{{ category.title }}</h2>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+
+
+    <a href="/">Retour a l'acceuil</a>
+{% endblock %}

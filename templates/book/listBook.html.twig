@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tout nos livre{% endblock %}
+
+{% block body %}
+    <h1>Tout nos livres</h1>
+<div class="liste">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Disponible</th>
+            <th>sortie par:</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.getCategory().getTitle() }}</td>
+                <td>{% if book.isAvailable %}
+                         disponible
+                    {% else %}
+                         indisponible
+                    {% endif %}</td>
+                <td>{% if book.user %}{{ book.getUser().getName() }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}
+
+{% block footer %}
+    <div class="separator">_____________________________</div>
+    <br>
+    <a href="/">Retour a l'acceuil</a>
+{% endblock %}
+
+
+
